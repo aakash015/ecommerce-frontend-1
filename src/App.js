@@ -1,0 +1,61 @@
+import React, { useContext, useEffect} from 'react'
+import { useHistory } from 'react-router';
+import { ToastContainer } from 'react-toastify'
+import { cartContext } from './contexts/cartContext';
+import { userContext } from './contexts/userContext';
+
+import Routes from './Routes'
+
+function App() {
+
+  const {cartItems,setCartItems} = useContext(cartContext);
+  const {user,setUser} = useContext(userContext);
+  const history = useHistory();
+
+    window.onload =   function(){
+      
+      let user =   JSON.parse(localStorage.getItem('user'));
+
+      console.log(user)
+      
+       
+      
+      if(user===undefined || user==null)  
+       setUser(null)
+      else 
+      if(Object.keys(user).length === 0)
+       setUser(null)
+      else 
+      setUser({
+        ...user
+      })
+
+      
+      
+      
+
+      localStorage.removeItem('user')
+  }
+
+    window.onbeforeunload = function(){
+
+       if(user!=null && user!==undefined)
+        localStorage.setItem('user',JSON.stringify(user))
+       
+       
+         
+    }
+  
+
+    
+  return (
+   
+    <>
+    <Routes />
+    <ToastContainer />
+    </>
+    
+  )
+}
+
+export default App

@@ -1,0 +1,25 @@
+.custom-nav-back{
+  background-color:black
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+.nav-link{
+  color: white;
+}
+
+.myclass{
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+}
+
+.badge{
+   position: absolute;
+   border-radius: 20px;
+   right: 20px;
+   bottom:35px
+}
+

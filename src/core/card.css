@@ -1,0 +1,10 @@
+.btn-qty{
+  border-radius: 50%;
+}
+
+.input-qty{
+  border: none;
+  margin-left: 1px;
+  text-align: center;
+  margin-right: 1px;
+}

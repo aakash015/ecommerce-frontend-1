@@ -1,0 +1,17 @@
+.btn,
+.jumbotron,
+.nav :hover {
+  border-radius: 0px;
+}
+
+body {
+  background: white
+}
+
+.footer{
+  border-top: 2px solid white;
+  height: 50px;
+}
+
+
+

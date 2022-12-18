@@ -1,0 +1,74 @@
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+
+.body-html{
+  background-color: rgba(62, 66, 61, 0.096);
+}
+
+
+.custom-row-signin{
+   background-color: white;
+   width: 80%;
+   margin-top: 80px;
+   margin-left: 60px;
+   border-radius: 30px ;
+}
+
+.cust-img-signin{
+  height: 100%;
+   border-top-left-radius: 30px;
+   border-bottom-left-radius: 30px;
+}
+
+
+.btn1{
+
+  border: none;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.btn1:hover{
+  background: white;
+  border: 1px solid;
+  color: black;
+}
+
+
+
+@media(max-width:990px){
+   .cust-img-signin{
+     display: none;
+    }
+    
+    .custom-row-signin{
+      background:url(../assets/sigin.jpg);
+      color: white;
+    }
+
+    .btn1{
+      background-color: white;
+      color: black;
+    }
+}
+
+@media(max-width:736px){
+  .custom-row-signin{
+    
+    margin-left: 47px;
+  }
+  .custom-h1-signin{
+    display: none;
+  }
+}
