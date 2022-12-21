@@ -4,6 +4,7 @@ import AddressVerification from './AddressVerification';
 import AddCategory from './admin/AddCategory';
 import AddProduct from './admin/AddProduct';
 import ManageCategories from './admin/ManageCategories';
+
 import ManageProducts from './admin/ManageProducts';
 import UpdateCategory from './admin/UpdateCategory';
 import UpdateProduct from './admin/UpdateProduct';
@@ -46,7 +47,6 @@ function Routes() {
          exact 
          path='/admin/category/update/:categoryId' 
          Component={UpdateCategory} />
-
           
        </Switch>
     

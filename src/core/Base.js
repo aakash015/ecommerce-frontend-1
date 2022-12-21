@@ -16,7 +16,7 @@ hidden = false
     
       
         <div  className='jumbotron jumbotron-fluid text-center' style={{backgroundImage:`url(${src})`,height:image===true?'300px':'200px'
-        ,display:hidden?'none':''
+        ,display:hidden?'none':'', backgroundColor:'black'
       }}>
           <h2 className='display-4 text-white' style={{fontWeight:'bold'}}>{title}</h2>
           {button && <button type='button' onClick={()=>{

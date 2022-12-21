@@ -95,8 +95,7 @@ const AddProduct = () => {
 
   const createProductForm = () => (
     <form>
-      <span>Post photo</span>
-      <div className="form-group">
+      <div className="form-group mt-3">
         <label className="btn btn-block btn-success">
           <input
             onChange={handleChange("photo")}
@@ -107,6 +106,7 @@ const AddProduct = () => {
           />
         </label>
       </div>
+      
       <div className="form-group">
         <input
           onChange={handleChange("name")}
@@ -178,7 +178,7 @@ const AddProduct = () => {
       <Link to="/admin/dashboard" className="btn btn-md btn-dark mb-3">
         Admin Home
       </Link>
-      <div className="row bg-dark text-white rounded">
+      <div className="row bg-dark rounded">
         <div className="col-md-8 offset-md-2">
           {successMessage()}
           {createProductForm()}
