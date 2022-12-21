@@ -16,7 +16,7 @@ const ManageOrders = () => {
     const data = await middle.json();
 
       setOrders(data);
-      console.log(data);
+      // console.log(data);
 
   }
 

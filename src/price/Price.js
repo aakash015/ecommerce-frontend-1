@@ -22,19 +22,15 @@ const Price = () => {
    
    const {search} = useLocation();
    const history = useHistory();
-  //  let count = 0;
-   console.log(history)
-  console.log(cartItems)
+  
    useEffect(() => {
     
     let x = 0;
     let c = 0;
-  //  console.log("use effect run")
     cartItems.map((product)=>{
       x = x+product.quantity*product.price
       c = c+product.quantity;
-    })
-    //  console.log(x)   
+    })   
     setTotal(x)
     setCount(c);
     
@@ -50,22 +46,14 @@ const Price = () => {
   
     
 
-  //  const parameters = new URLSearchParams(search);
-   
-  //  const order_id = parameters.get('reference');
-   
-    console.log("localStorage wala item");
-    
+  
       const products =  order.slice(0,n-1);
       const address =  order[n-1];
       products.map((product)=>
         amount = amount+product.quantity*product.price 
       )
 
-    // console.log("this is order");
-    // console.log(order)  
-    // console.log(products);
-    
+   
     const finalObj = {
       products,
       orderid,
@@ -74,11 +62,9 @@ const Price = () => {
       user:_id
     }
     
-  //  console.log(orderId);
-
    try{ 
    if(user!=null){ 
-    console.log("i am here")
+    
     const temp = await fetch(`${API}/order/create/${_id}`,{
       method:"POST",
       headers:{
@@ -91,13 +77,12 @@ const Price = () => {
   const data = await temp.json();
     
    
-  console.log(data);
+  
    return ;
    
 }}
    catch(error){
-    console.log("inside the catch block")
-       console.log(error)
+
    }
 }
 
@@ -128,8 +113,6 @@ const Price = () => {
          
         let {order} = await data.json()
         
-        console.log(order)
-        console.log(order.amount)
         
         myfunc(order.id);
 

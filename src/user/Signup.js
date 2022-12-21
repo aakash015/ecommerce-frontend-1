@@ -30,7 +30,6 @@ function Signup() {
 
   const onSubmit = async(event)=>{
   
-    console.log("i am here");
      event.preventDefault();
 
      setValues({...values,error:false});
@@ -38,7 +37,6 @@ function Signup() {
      const data = await signup({name,email,password})
      
      if(data.error){
-       console.log(data);
       setValues({...values,error: data.error,success:false})
       toast.error('Signup failed')
      }

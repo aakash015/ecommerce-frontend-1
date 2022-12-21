@@ -21,8 +21,7 @@ function Cart() {
     setProducts(cartItems)
   }, [cartItems]);
 
-  console.log("these are cart wale products")
-  console.log(products)
+  
   const loadAllProducts=()=>{
        return(
          <div>

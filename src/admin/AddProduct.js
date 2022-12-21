@@ -41,7 +41,7 @@ const AddProduct = () => {
 
   const preload = () => {
     getCategories().then(data => {
-      //console.log(data);
+      
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -80,7 +80,6 @@ const AddProduct = () => {
   const handleChange = name => event => {
     const value = name === "photo" ? event.target.files[0] : event.target.value;
     formData.set(name, value);
-    // console.log(formData.get(name));
     setValues({ ...values, [name]: value });
   };
 

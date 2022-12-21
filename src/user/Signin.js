@@ -11,7 +11,6 @@ import { userContext } from '../contexts/userContext';
 
 function Signin() {
 
-  console.log("signin component called");
   const {user,setUser} = useContext(userContext);
 
   const [values,setValues] = useState({

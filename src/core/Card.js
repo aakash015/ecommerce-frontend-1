@@ -15,8 +15,7 @@ import { userContext } from '../contexts/userContext';
   }) => {
       
    
-console.log("here from card.js");
-console.log(product);
+
 
        const [redirect,setRedirect] = useState();
 

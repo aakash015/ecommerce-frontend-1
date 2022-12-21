@@ -1,6 +1,5 @@
 import React,{ useContext, useEffect, useState } from 'react'
 import { userContext } from '../contexts/userContext';
-// import { isAuthenticated } from '../auth/helper';
 import Base from '../core/Base'
 import { getCategory, updateCategory } from './helper/adminapicall'
 

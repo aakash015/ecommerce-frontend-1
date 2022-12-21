@@ -136,8 +136,8 @@ export const updateProduct = (productId, userId, token, product) => {
 
 
 export const updateCategory = (categoryId,userId,token,category)=>{
-  console.log('hurr')
-     console.log(JSON.stringify(category));
+  // console.log('hurr')
+    //  console.log(JSON.stringify(category));
      return fetch(`${API}/category/${categoryId}/${userId}`,{
        method:"PUT",
        headers:{

@@ -25,8 +25,7 @@ const AddressVerification = () => {
 
      x.push(address[0]);
 
-    console.log("ths is x")
-     console.log(x)
+    
 
      localStorage.setItem('order',JSON.stringify(x));
      setOrder(x);
@@ -34,23 +33,19 @@ const AddressVerification = () => {
      
      
   },[])
-   console.log(user)
-   console.log(address)
 
 
   const addressInsert = ()=>{
          
       const val =  document.querySelector('input[name="address"]:checked').value;
     
-      console.log(address[val])
+      
       
       let n = order.length;
 
      order[n-1] = address[val];
 
 
-     console.log("this is order")
-     console.log(order);
       
      localStorage.setItem('order',JSON.stringify(order));
 

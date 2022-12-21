@@ -31,12 +31,9 @@ function Home() {
 
     const data = await middle.json();
 
-    console.log("@@@@@")
-    console.log(data);
     setCartItems(data.cart)
     
   }
-    // console.log(data);
 
 }
 
@@ -58,17 +55,7 @@ function Home() {
 
   }, [user]);
 
-  // let {cartItems} = useContext(cartContext);
-
-//   console.log("this is object")
-// //   console.log(obj)
-// console.log(cartItems)
-// console.log("home component rerendered")
-console.log("these are products")
-console.log(products);
-
-console.log("these are cartItems");
-console.log(cartItems)
+  
   return (
     
      <div className="text-center">

@@ -16,8 +16,7 @@ function App() {
       
       let user =   JSON.parse(localStorage.getItem('user'));
 
-      console.log(user)
-      
+     
        
       
       if(user===undefined || user==null)  

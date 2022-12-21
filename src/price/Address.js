@@ -4,7 +4,6 @@ import { userContext } from '../contexts/userContext'
 
 const Address = () => {
 
-  console.log("address component called");
   
   const [values,setValues] = useState({
     name:"",
@@ -57,7 +56,7 @@ const Address = () => {
        pincode:"",
        phonenumber:""})
 
-    console.log(response);
+    
    }
    catch(error)
    {

@@ -16,17 +16,14 @@ const ManageCategories = () => {
        getCategories()
        .then((data)=>{
              if(data.error){
-                 console.log("this is backend error")
                  console.log(data.error);
              }
              else
              {
                setCategories(data);
-                console.log(data);
              }
        })
        .catch(err=>{
-            console.log("this is catch block error");
             console.log(err) 
        })
   }

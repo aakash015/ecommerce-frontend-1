@@ -4,7 +4,6 @@ import { userContext } from './contexts/userContext'
 
 const EditAddress = ({index}) => {
 
-  console.log("component rerendered")
 
   
   const {user,setUser} = useContext(userContext);
@@ -30,26 +29,15 @@ const EditAddress = ({index}) => {
 
   const addressFill = () => {
        
-    console.log('function valled');
+   
     const addressArr = user.address;
-    // console.log(index);
 
-    console.log(document.getElementById('name'))
+   
     document.getElementById('name').value = addressArr[index].name;
     document.getElementById('address').value = addressArr[index].address;
     document.getElementById('state').value = addressArr[index].state;
     document.getElementById('pincode').value = addressArr[index].pincode;
     document.getElementById('phonenumber').value = addressArr[index].phonenumber;
-
-    // setValues({
-    //   name:addressArr[index].name,
-    //   address:addressArr[index].address,
-    //   state:addressArr[index].state,
-    //   pincode:addressArr[index].pincode,
-    //   phonenumber:addressArr[index].phonenumber
-    // })
-
-    console.log(values);
 
   }
 
@@ -87,7 +75,6 @@ const EditAddress = ({index}) => {
         pincode:"",
         phonenumber:""})
  
-     console.log(response);
     }
     catch(error)
     {

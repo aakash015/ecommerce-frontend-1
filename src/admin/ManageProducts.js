@@ -16,20 +16,19 @@ const ManageProducts = () => {
      
     
        getProducts().then(data=>{
-         console.log("here");
+       
            if(data.error){
                console.log(data.error)
            }else{
-             console.log('data le aaya')
+            
              setProducts(data);
            }
        }).catch((err)=>console.log(err))
 
-       console.log("here is the call")
   }
 
   useEffect(()=>{
-    console.log("use effect function called")
+
      preload();
      
   },[])

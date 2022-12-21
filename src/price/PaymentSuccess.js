@@ -5,7 +5,6 @@ import Base from '../core/Base';
 const PaymentSuccess = () => {
 
 
-  console.log("this component rendered")
   const history = useHistory();
   
 

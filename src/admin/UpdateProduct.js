@@ -67,7 +67,6 @@ const UpdateProduct = ({ computedMatch }) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
-        console.log("here setting the properties")
         setValues({
           categories: data,
           formData: new FormData() 

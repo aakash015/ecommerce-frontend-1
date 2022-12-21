@@ -14,10 +14,7 @@ const AddCategory = () => {
    
    const {token} = user;
 
-   console.log("component rerendered");
-   
-   if(success)
-   console.log("jingalala")
+  
    const handleChange = (event)=>{
       
        setName(event.target.value);

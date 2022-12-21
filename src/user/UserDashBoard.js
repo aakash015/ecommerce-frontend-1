@@ -31,7 +31,6 @@ const UserDashboard = () => {
          method:'POST'
       });
 
-      console.log("This is order data");
 
       const temp = await middle.json();
        
@@ -41,7 +40,6 @@ const UserDashboard = () => {
   useEffect(()=>{
     
     datafunc();
-    // console.log('!!!!1')
     
   }, []);
   
@@ -52,9 +50,9 @@ const UserDashboard = () => {
     <div className="row mb-2 ">
     {
       
-      // console.log(data)
+      
       data!==null && data.map((d,index)=>{
-        console.log(d)
+       
          return d.products.map((t,i2)=>{
 
           return (<div className="col-md-5 ml-5 " key={i2}>
@@ -78,8 +76,6 @@ const UserDashboard = () => {
             </div>
           </div>)
          })
-                
-            // console.log("main chala")
           
 
           })

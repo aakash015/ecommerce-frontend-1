@@ -15,7 +15,6 @@ export const signup = async (user)=>{
       },
       body: JSON.stringify(user)
     });
-    console.log(response);
     return await response.json();
   } catch (err) {
     return console.log(err);
@@ -36,7 +35,6 @@ export const signin = async (user)=>{
       body: JSON.stringify(user)
     });
     response = await response.json();
-    console.log(response)
     return response;
   } catch (err) {
     return console.log(err);
@@ -65,7 +63,7 @@ export const signout = async (setUser,next)=>{
           method: "GET"
         });
         next();
-        return console.log("signout success");
+        // return console.log("signout success");
       } catch (err) {
         return console.log(err);
       }

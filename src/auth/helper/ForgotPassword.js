@@ -9,8 +9,6 @@ import broken from '../../assets/broken.gif'
 
 function parseJwt (token) {
   const decode = JSON.parse(atob(token.split('.')[1]));
-  console.log("this is decoding")
-  console.log(decode);
   return decode
 }
 
@@ -18,11 +16,9 @@ const ForgotPassword = () => {
 
   const {token} = useParams();
   
-  console.log(token)
 
   const {_id,iat,exp} = parseJwt(token);
   
-  console.log(_id)
 
   const history = useHistory();
 
@@ -63,7 +59,6 @@ const ForgotPassword = () => {
         toast.error("An unknown error occured")
       }
 
-      console.log(response)
  }
 
 
