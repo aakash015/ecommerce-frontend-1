@@ -154,7 +154,7 @@ const Price = () => {
       {
       history.location.pathname==="/addressverification"&& <button className='btn btn-block btn-success' style={{
         borderRadius:'10px' 
-      }} onClick = {paymentMethod}>Proceed To payment</button>}
+      }} onClick = {paymentMethod} disabled={user.address.length===0?true:false}>Proceed To payment</button>}
 
       {
       history.location.pathname!=="/addressverification"&&  

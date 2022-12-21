@@ -58,7 +58,7 @@ function Menu({history}){
              <NavLink className='nav-link' to="/" exact activeClassName='myclass'><AiOutlineHome style={{marginBottom:'5px'}}/> Home</NavLink>
         </li>
        
-       {(
+       {user && user.role===0&&(
             <li className="nav-item">
             <NavLink className='nav-link' to="/user/dashboard" exact activeClassName='myclass'>Dashboard</NavLink>
             </li>
