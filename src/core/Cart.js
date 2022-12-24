@@ -58,10 +58,12 @@ function Cart() {
   return (
     <Base title="" description='' src={cartimg} image={true}>
      <div className="row text-center">
-          <div className="col-lg-8">{loadAllProducts()}</div>
+        {products.length>0&&<><div className="col-lg-8">{loadAllProducts()}</div>
           <div className="col-lg-4">
             <Price />
-            </div>
+            </div></>}
+
+        {products.length===0 && <><h1 className='ml-5'>Your Cart Is Empty </h1></>}    
      </div>
 
     </Base>

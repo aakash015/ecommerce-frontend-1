@@ -27,9 +27,7 @@ const adminLeftSide = ()=>{
            <li className="list-group-item">
              <NavLink to='/admin/products' className="nav-link text-success">Manage Products</NavLink>
            </li>
-           <li className="list-group-item">
-             <NavLink to='/admin/orders' className="nav-link text-success">Manage Orders</NavLink>
-           </li>
+           
          </ul>
        </div>
        </div>
