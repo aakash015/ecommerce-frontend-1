@@ -6,6 +6,7 @@ import Card from './Card'
 import { getProducts } from './helper/coreapicalls'
 import CartContextProvider, { cartContext } from '../contexts/cartContext'
 import { userContext } from '../contexts/userContext'
+import Loader from './Loader'
 
 
 function Home() {
@@ -38,7 +39,9 @@ function Home() {
 }
 
   const loadAllProduct = ()=>{
+    console.log("hello i am called")
       getProducts().then(data=>{
+        console.log(data)
           if(data.error){
             setError(data.error)
           }else{
@@ -63,8 +66,15 @@ function Home() {
     <Base src={bag} image={true} title='Happiness is not in money,
      but in shopping.' button={true}>
           <h1>All Products</h1>
-           {/* <h2>{cartItems}</h2> */}
+         
+         
+          <Loader />
+         
+          <div>
           <div className="row">
+          
+          
+           
             {products.map((product,index)=>{
                 let prod = cartItems.find(o => o.product._id === product._id);
                 
@@ -77,6 +87,7 @@ function Home() {
                  </div>
                )
             })}
+          </div>
           </div>
     </Base>
          

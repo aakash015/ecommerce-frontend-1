@@ -5,6 +5,9 @@ import { API } from "../../backend";
 
 export const addItemToCart = async(item,cartItems,setCartItems,_id)=>{
     
+  // setTimeout(()=>{
+  //   console.log("there here") 
+  // },2000)
   if(_id===undefined)
          return toast.warn("please Signin to continue");
         

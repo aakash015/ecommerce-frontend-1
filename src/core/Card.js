@@ -5,6 +5,7 @@ import { addItemToCart, removeItemFromCart } from './helper/cartHelper';
 import ImageHelper from './helper/ImageHelper';
 import './card.css'
 import { userContext } from '../contexts/userContext';
+import { loadingContext } from '../contexts/loadingContext';
 
   
   const Card = ({product,addToCart=true,removeFromCart=true,
@@ -16,9 +17,9 @@ import { userContext } from '../contexts/userContext';
       
    
 
-
+      
        const [redirect,setRedirect] = useState();
-
+     
        let {cartItems,setCartItems} = useContext(cartContext);
        
        const {user} = useContext(userContext);
@@ -33,7 +34,11 @@ import { userContext } from '../contexts/userContext';
        const cartPrice = product?product.price: "DEFAULT"
        
        const addToCartHelper = ()=>{
+       
          addItemToCart(product,cartItems,setCartItems,_id)
+        setTimeout(()=>{
+          document.getElementById('loaderClose').click()
+        },500)
        }
        const getARedirect = (redirect)=>{
            if(redirect){
@@ -50,6 +55,7 @@ import { userContext } from '../contexts/userContext';
                     onClick={addToCartHelper}
                     className="btn btn-block btn-outline-success mt-2 mb-2"
                     disabled={product.stock===0?true:false}
+                    data-toggle="modal" data-target="#loaderModal"
                 >
                  Add to Cart
                 </button>
@@ -69,7 +75,14 @@ import { userContext } from '../contexts/userContext';
        return (qtybtn && (<div className="input-group">
          <span className="input-group-btn">
             <button type="button" className="btn btn-rounded btn-danger btn-number btn-qty"  data-type="minus" data-field=""
-              onClick={() => {removeItemFromCart(product._id,setCartItems,_id)}}
+              onClick={() => {
+                
+                removeItemFromCart(product._id,setCartItems,_id)
+                setTimeout(()=>{
+                  document.getElementById('loaderClose').click()
+                },500)
+              }}
+              data-toggle="modal" data-target="#loaderModal"
             >
               -
             </button>
@@ -79,7 +92,7 @@ import { userContext } from '../contexts/userContext';
          />
           <span className="input-group-btn">
             <button type="button" className="btn btn-success btn-number btn-qty" data-type="plus" data-field=""
-              onClick={addToCartHelper} disabled={product.stock===0?true:false}
+              onClick={addToCartHelper} disabled={product.stock===0?true:false} data-toggle="modal" data-target="#loaderModal"
             >
                +
             </button>
@@ -94,6 +107,7 @@ import { userContext } from '../contexts/userContext';
               setReload(!reload)  
             }}
             className="btn btn-block btn-outline-danger mt-2 mb-2"
+            data-toggle="modal" data-target="#loaderModal"
         >
            Remove from cart
         </button>)

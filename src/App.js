@@ -1,8 +1,10 @@
-import React, { useContext, useEffect} from 'react'
+import React, { useContext, useEffect, useState} from 'react'
 import { useHistory } from 'react-router';
 import { ToastContainer } from 'react-toastify'
 import { cartContext } from './contexts/cartContext';
+import { loadingContext } from './contexts/loadingContext';
 import { userContext } from './contexts/userContext';
+import Loader from './core/Loader';
 
 import Routes from './Routes'
 
@@ -11,6 +13,9 @@ function App() {
   const {cartItems,setCartItems} = useContext(cartContext);
   const {user,setUser} = useContext(userContext);
   const history = useHistory();
+  const {loading} = useContext(loadingContext);
+  
+  // console.log(loading);
 
     window.onload =   function(){
       
