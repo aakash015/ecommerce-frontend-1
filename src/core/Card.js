@@ -36,9 +36,9 @@ import { loadingContext } from '../contexts/loadingContext';
        const addToCartHelper = ()=>{
        
          addItemToCart(product,cartItems,setCartItems,_id)
-        setTimeout(()=>{
+       
           document.getElementById('loaderClose').click()
-        },3000)
+       
        }
        const getARedirect = (redirect)=>{
            if(redirect){
@@ -78,9 +78,9 @@ import { loadingContext } from '../contexts/loadingContext';
               onClick={() => {
                 
                 removeItemFromCart(product._id,setCartItems,_id)
-                setTimeout(()=>{
+                
                   document.getElementById('loaderClose').click()
-                },3000)
+               
               }}
               data-toggle="modal" data-target="#loaderModal"
             >
