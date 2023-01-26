@@ -5,7 +5,7 @@ import { addItemToCart, removeItemFromCart } from './helper/cartHelper';
 import ImageHelper from './helper/ImageHelper';
 import './card.css'
 import { userContext } from '../contexts/userContext';
-import { loadingContext } from '../contexts/loadingContext';
+import { toast } from 'react-toastify';
 
   
   const Card = ({product,addToCart=true,removeFromCart=true,
@@ -34,11 +34,10 @@ import { loadingContext } from '../contexts/loadingContext';
        const cartPrice = product?product.price: "DEFAULT"
        
        const addToCartHelper = ()=>{
-       
+         
+         toast.info('adding product wait for a while');
          addItemToCart(product,cartItems,setCartItems,_id)
-        setTimeout(()=>{
-          document.getElementById('loaderClose').click()
-        },3000)
+       
        }
        const getARedirect = (redirect)=>{
            if(redirect){
@@ -76,11 +75,9 @@ import { loadingContext } from '../contexts/loadingContext';
          <span className="input-group-btn">
             <button type="button" className="btn btn-rounded btn-danger btn-number btn-qty"  data-type="minus" data-field=""
               onClick={() => {
-                
+                toast.warn('removing product from cart wait for a while')
                 removeItemFromCart(product._id,setCartItems,_id)
-                setTimeout(()=>{
-                  document.getElementById('loaderClose').click()
-                },3000)
+                
               }}
               data-toggle="modal" data-target="#loaderModal"
             >

@@ -4,9 +4,10 @@ import bag from '../assets/hero-bag.jpg'
 import Base from './Base'
 import Card from './Card'
 import { getProducts } from './helper/coreapicalls'
-import CartContextProvider, { cartContext } from '../contexts/cartContext'
+import { cartContext } from '../contexts/cartContext'
 import { userContext } from '../contexts/userContext'
-import Loader from './Loader'
+import WaitingLoader from './WaitingLoader'
+
 
 
 function Home() {
@@ -68,13 +69,14 @@ function Home() {
           <h1>All Products</h1>
          
          
-          <Loader />
          
           <div>
+          
+          
+        
+          
           <div className="row">
           
-          
-           
             {products.map((product,index)=>{
                 let prod = cartItems.find(o => o.product._id === product._id);
                 

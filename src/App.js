@@ -4,8 +4,8 @@ import { ToastContainer } from 'react-toastify'
 import { cartContext } from './contexts/cartContext';
 import { loadingContext } from './contexts/loadingContext';
 import { userContext } from './contexts/userContext';
-import Loader from './core/Loader';
-
+import WaitingLoader from './core/WaitingLoader';
+import 'rsuite/dist/rsuite.min.css';
 import Routes from './Routes'
 
 function App() {
