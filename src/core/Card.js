@@ -6,6 +6,7 @@ import ImageHelper from './helper/ImageHelper';
 import './card.css'
 import { userContext } from '../contexts/userContext';
 import { toast } from 'react-toastify';
+import { loadingContext } from '../contexts/loadingContext'
 
   
   const Card = ({product,addToCart=true,removeFromCart=true,
@@ -21,7 +22,7 @@ import { toast } from 'react-toastify';
        const [redirect,setRedirect] = useState();
      
        let {cartItems,setCartItems} = useContext(cartContext);
-       
+       let {loading,setLoading} = useContext(loadingContext)
        const {user} = useContext(userContext);
       
        let _id;
@@ -33,10 +34,14 @@ import { toast } from 'react-toastify';
    
        const cartPrice = product?product.price: "DEFAULT"
        
-       const addToCartHelper = ()=>{
+       const addToCartHelper = async()=>{
          
-         toast.info('adding product wait for a while');
-         addItemToCart(product,cartItems,setCartItems,_id)
+        
+        //  toast.info('adding product wait for a while');
+         setLoading(true);
+        //  document.getElementById('lo').style.marginTop = window.innerHeight+"50vh"
+         await addItemToCart(product,cartItems,setCartItems,_id)
+         setLoading(false);
        
        }
        const getARedirect = (redirect)=>{
@@ -53,8 +58,9 @@ import { toast } from 'react-toastify';
                 <button
                     onClick={addToCartHelper}
                     className="btn btn-block btn-outline-success mt-2 mb-2"
-                    disabled={product.stock===0?true:false}
+                    disabled={loading || product.stock===0?true:false}
                     data-toggle="modal" data-target="#loaderModal"
+                    
                 >
                  Add to Cart
                 </button>
@@ -74,11 +80,13 @@ import { toast } from 'react-toastify';
        return (qtybtn && (<div className="input-group">
          <span className="input-group-btn">
             <button type="button" className="btn btn-rounded btn-danger btn-number btn-qty"  data-type="minus" data-field=""
-              onClick={() => {
-                toast.warn('removing product from cart wait for a while')
-                removeItemFromCart(product._id,setCartItems,_id)
-                
+              onClick={async() => {
+                // toast.warn('removing product from cart wait for a while')
+                setLoading(true)
+                await removeItemFromCart(product._id,setCartItems,_id)
+                setLoading(false)
               }}
+              disabled = {loading?true:false}
               data-toggle="modal" data-target="#loaderModal"
             >
               -
@@ -88,8 +96,8 @@ import { toast } from 'react-toastify';
            onChange={()=>{}}
          />
           <span className="input-group-btn">
-            <button type="button" className="btn btn-success btn-number btn-qty" data-type="plus" data-field=""
-              onClick={addToCartHelper} disabled={product.stock===0?true:false} data-toggle="modal" data-target="#loaderModal"
+            <button type="button"  className="btn btn-success btn-number btn-qty" data-type="plus" data-field=""
+              onClick={addToCartHelper} disabled={loading || product.stock===0?true:false} data-toggle="modal" data-target="#loaderModal"
             >
                +
             </button>
@@ -105,6 +113,7 @@ import { toast } from 'react-toastify';
             }}
             className="btn btn-block btn-outline-danger mt-2 mb-2"
             data-toggle="modal" data-target="#loaderModal"
+            disabled = {loading}
         >
            Remove from cart
         </button>)

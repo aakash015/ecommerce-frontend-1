@@ -7,6 +7,7 @@ import { getProducts } from './helper/coreapicalls'
 import { cartContext } from '../contexts/cartContext'
 import { userContext } from '../contexts/userContext'
 import WaitingLoader from './WaitingLoader'
+import { loadingContext } from '../contexts/loadingContext'
 
 
 
@@ -17,7 +18,7 @@ function Home() {
 
    const {user} = useContext(userContext);
    const {cartItems,setCartItems} = useContext(cartContext);
-
+   const {loading} = useContext(loadingContext)
   const myfunc = async()=>{
          
    if(user && user._id){
@@ -68,12 +69,12 @@ function Home() {
      but in shopping.' button={true}>
           <h1>All Products</h1>
          
-         
+          {loading && <WaitingLoader />}
          
           <div>
           
           
-        
+         
           
           <div className="row">
           
