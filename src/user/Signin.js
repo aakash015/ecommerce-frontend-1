@@ -8,6 +8,7 @@ import Menu from '../core/Menu';
 import 'react-toastify/dist/ReactToastify.css';
 import { userContext } from '../contexts/userContext';
 import { API } from '../backend';
+import WaitingLoader from '../core/WaitingLoader';
 
 
 function Signin() {
@@ -24,7 +25,7 @@ function Signin() {
 
   const {email,password,loading,didRedirect} = values
 
-
+// values.loading = false;
   // const {user} = isAuthenticated();
 
   const handleChange = (event,name)=>{
@@ -40,7 +41,6 @@ function Signin() {
     event.preventDefault();
     
 
-   
 
     setValues({...values,error:false,loading:true})
     const data = await signin({email,password});
@@ -57,6 +57,8 @@ function Signin() {
             didRedirect:true
           })
                 }
+
+                setValues({...values,error:false,loading:true})
   }
 
 
@@ -73,21 +75,14 @@ function Signin() {
         return <Redirect to="/" /> 
   }
 
-  const loadingMessage = ()=>{
-    
-    return( 
-     loading && <div className="alert alert-info"
-     >
-     <h2>Loading...</h2>
-     </div>
-    )
- }
  
 
  const forgotPassword = async()=>{
         
   const email =values.email;
   
+  setValues({...values,loading:true});
+
      if(email==="")
       return toast.error('Please enter email then click forgot password');
 
@@ -105,16 +100,20 @@ function Signin() {
       
      if(response.message)
      {
+        setValues({...values,loading:false});
         return toast.error('No account found with this mail');
      }
     
      if(response.accepted)
      {
-      return toast.info('Password reset link sent to your mail')
+      setValues({...values,loading:false});
+       return toast.info('Password reset link sent to your mail')
      }else{
+      setValues({...values,loading:false});
       return toast.error('some error occured');
      } 
-
+     
+      
  }
 
   const signInForm = ()=>{
@@ -127,7 +126,9 @@ function Signin() {
               <div className='col-lg-5'>
                    <img src={loginscreen} className='img-fluid cust-img-signin' alt='.'/>
               </div>
+              
               <div className='col-lg-7 px-5 pt-5'>
+                 {loading && <WaitingLoader />}
                 <h1 className='py-3 custom-h1-signin'>WELCOME USER</h1>
                 <h4>Signin into your account</h4>
               <form>
@@ -158,8 +159,8 @@ function Signin() {
 
                  
                  <div className="form-row">
-                  <div className='col-lg-12'>
-                  <button onClick={onSubmit} className="btn1 mb-3 form-control">Login</button>
+                  <div className='col-lg-12'>{
+                  <button onClick={onSubmit} disabled = {loading} className="btn1 mb-3 form-control">Login</button>}
                   </div>
                    
                   
@@ -187,7 +188,6 @@ function Signin() {
   return (
    <>
     <Menu />
-      {loadingMessage()}
        {signInForm()}
        {performRedirect()}
       

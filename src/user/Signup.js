@@ -5,22 +5,27 @@ import signupImg from '../assets/signup-img.png'
 import {toast } from 'react-toastify';
 import './signup.css'
 import Menu from '../core/Menu';
+import WaitingLoader from '../core/WaitingLoader';
 
 
 
 function Signup() {
 
 
+  let [loading,setLoading] = useState(false);
+
   const [values,setValues] = useState({
     name: "",
     email: "",
     password: "",
     error:"",
-    success: false
+    success: false,
   })
 
   const {name,email,password,error,success} = values;
 
+  
+  
   const handleChange = (event,name)=>{
     setValues({...values,error:false,[name]: event.target.value})
     //[name] object key variable nhi ho sakti hai isliye hi ye synatx 
@@ -31,12 +36,14 @@ function Signup() {
   const onSubmit = async(event)=>{
   
      event.preventDefault();
+     
+      setLoading(true);
 
      setValues({...values,error:false});
 
      const data = await signup({name,email,password})
      
-     if(data.error){
+     if(data.err){
       setValues({...values,error: data.error,success:false})
       toast.error('Signup failed')
      }
@@ -51,6 +58,8 @@ function Signup() {
          success: true
        })
      }
+     
+     setLoading(false);
  }
 
   const signUpForm = ()=>{
@@ -69,6 +78,7 @@ function Signup() {
               <form>
 
                <div className="form-row">
+                {loading && <WaitingLoader />}
                   <div className='col-lg-12'>
                <input type="text" 
                   className='form-control my-3' 
@@ -104,6 +114,7 @@ function Signup() {
                  <div className="form-row">
                   <div className='col-lg-12'>
                   <button type='submit' className=" btn1 mb-5 form-control" 
+                   disabled = {loading}
                   onClick={(e)=>onSubmit(e)}
                   >Submit</button>
                   </div>
