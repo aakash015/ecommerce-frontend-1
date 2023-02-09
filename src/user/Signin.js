@@ -91,7 +91,7 @@ function Signin() {
       return toast.error('Please enter email then click forgot password');
 
   
-     const middle = await fetch(`http://localhost:3100/api/forgotpassword`,{
+     const middle = await fetch(`${API}/forgotpassword`,{
        method:'POST',
        body:JSON.stringify({email:email}),
        headers:{
